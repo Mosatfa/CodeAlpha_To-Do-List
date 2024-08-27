@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --background-main: #F06293;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--background-main);
+    background: linear-gradient(135deg, var(--background-main) 50%, #E65C8B 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.control-board {
+    height: 600px;
+    width: 500px;
+    padding: 32px;
+    background-color: #394049;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 24px;
+
+}
+
+.form input {
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #31373E;
+    border: 1px solid #31373E;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 8px;
+    ;
+}
+
+.form .btn-add {
+    align-self: flex-end;
+    padding: 8px 12px;
+    background-color: var(--background-main);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.form .btn-add:hover {
+    background-color: #DE5986;
+}
+
+.todo-list {
+    overflow: auto;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    width: 100%;
+    transition: all 0.1s ease-in;
+}
+.todo-item:hover {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #32373f;
+}
+
+.todo-item input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #ddd;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+
+}
+
+.todo-item input[type="checkbox"]:checked {
+    background-color: var(--background-main);
+    border-color: var(--background-main);
+}
+
+.todo-item input[type="checkbox"]:checked+label {
+    text-decoration: line-through;
+    color: #999;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+.darg {
+    opacity: 0;
+    cursor: pointer;
+}
+.darg i {
+    font-size: 14px;
+}
+.todo-item:hover .darg  {
+    opacity: 1;
+}
+.todo-item.dragging {
+    opacity: 0.5;
+}

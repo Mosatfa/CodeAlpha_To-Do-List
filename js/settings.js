@@ -1,11 +1,10 @@
 import DargAndDrop from '../js/drag&drop.js'
 class Settings {
     constructor() {
-        
+
         if (localStorage.getItem("data")?.length) {
             this.data = JSON.parse(localStorage.getItem("data"))
             this.displayData()
-            new DargAndDrop()
         } else {
             this.data = []
         }
@@ -16,7 +15,7 @@ class Settings {
 
     createTask() {
         let task = {
-            id: this.data.length + 1,
+            id: this.data[this.data.length - 1] == undefined ? this.data.length + 1 : this.data[this.data.length - 1].id + 1,
             textContent: this.input.value,
             isChecked: false
         }
@@ -46,10 +45,11 @@ class Settings {
             checkbox.addEventListener('click', () => this.checkedTask(index));
         });
 
-        document.querySelectorAll('.todo-item .darg').forEach((ele,index) => {
+        document.querySelectorAll('.todo-item .darg').forEach((ele, index) => {
             ele.addEventListener('click', () => this.deleteTask(index));
         });
         new DargAndDrop()
+
     }
 
     saveData() {
@@ -64,8 +64,10 @@ class Settings {
 
     deleteTask(index) {
         let id = this.data[index].id.toString()
-        let order = JSON.parse(localStorage.getItem("todoOrder")).filter(e => e != id)
-        localStorage.setItem("todoOrder", JSON.stringify(order))
+        if (JSON.parse(localStorage.getItem('todoOrder'))) {
+            let order = JSON.parse(localStorage.getItem("todoOrder")).filter(e => e != id)
+            localStorage.setItem("todoOrder", JSON.stringify(order))
+        }
         this.data.splice(index, 1)
         this.saveData()
     }
